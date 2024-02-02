@@ -7,9 +7,57 @@
   <link rel="stylesheet" href="main.css">
   <title>Sorting Hat</title>
 </head>
-<body>
-  
+<body class="container">
 
+  <div class="card">
+    <div class="card-header">Sorting Extravaganza</div>
+    <div class="card-body"></div>
+      <img class="hat" src="https://i0.wp.com/www.sporcle.com/blog/wp-content/uploads/2017/03/sorting-hat.png?resize=1280%2C720&ssl=1" alt="sorting-hat">
+      <!--what I want to call the sorting hat discription section-->
+      <h5 class="card-title">Welcome First Years!!!</h5>
+      <!--what the sorting hat will be telling the first years that are about to get sorted-->
+      <p class="card-text">Brave hearts, curious minds, welcome to the sorting magic that binds. In this hallow hall, where dreams take flight, let your courage shine, as you embark on your magical delight</p>
+
+     
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Accio
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Student</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <form>
+          <div class="form-floating mb-3">
+            <input class="form-control form-control-lg" type="text" placeholder="Student name " id="name" aria-label="name" required>
+            <label for="name">Name:</label>
+          </div>
+          
+          <div class="form-floating mb-3">
+            <input type="url" class="form-control" id="imageUrl" placeholder="image" >
+            <label for="floatingInput">Image:</label>
+          </div>
+      
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="sortBtn" class="btn btn-primary">Sort</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="filterBtns"></div>
+  <div class="studentCards"></div>
+  <div class="expelCards"></div>
 
 
 

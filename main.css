@@ -1,3 +1,13 @@
 body {
-  background-color: beige;
+  background-color: rgb(174, 162, 147);
+}
+.container {
+  display:flex;
+  text-align: center;
+  background-image: url("https://cdn2.vectorstock.com/i/1000x1000/82/61/colorful-magic-wand-at-black-background-vector-21288261.jpg");
+  color: rgb(245, 245, 237);
+ } 
+ .hat {
+  width: 500px;
+  align-self: center;
 }
