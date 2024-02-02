@@ -1,6 +1,8 @@
+// needed this to get the modal.hide to make my modal go away after button pressed
+const myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
+
 let filterToggle =true;
 // Student data go here //
-// Need to finish filling these out //
 const students = [
   {
     id: 1,
@@ -39,6 +41,30 @@ renderToDom = (divId, htmlToRender) => {
   };
 
 // sort function //
+const sortFunction = () => {
+  const house = Math.floor(Math.random() * 4) 
+  const houseId = ["gryffindor", "ravenclaw", "hufflepuff", "slytherin"];
+  const nameInput = document.querySelector('#name');
+  console.log(houseId[house]);
+
+  const newStudent = {
+    
+    id: students.length +1,
+    name: nameInput.value,
+    house: houseId[house],
+    imageUrl: `https://api.dicebear.com/7.x/pixel-art/svg?seed=${nameInput.value}`,
+  
+  }
+  students.push(newStudent);
+  myModal.hide()
+  nameInput.value = ""
+};
+
+// sort button for my form //
+document.querySelector("#sortBtn").addEventListener("click", (e) => {
+  sortFunction()
+  cardsOnDom(students);
+});
 
 // Filter student buttons //
 const filterBtn = () => {
@@ -49,14 +75,14 @@ const filterBtn = () => {
     <button class="btn btn-secondary btn-lg buttonRow" id="huffkepuff">Hufflepuff</button>
     <button class="btn btn-secondary btn-lg buttonRow" id="slytherin">Slytherin</button>
     <button class="btn btn-secondary btn-lg buttonRow" id="expelled">Expelled</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="">All Students</button></button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="all-students">All Students</button></button>
   </div>
   `;
 renderToDom('#filterBtn', domString)
 };
 
 // Cards //
-const cardOnDom = (students) => {
+const cardsOnDom = (students) => {
   let domString = "";
   students.map(student => {
 
@@ -64,9 +90,7 @@ const cardOnDom = (students) => {
     <img src="${student.imageUrl}" class="card-img-top" alt=${student.name}>
     <div class="card-body">
       <h5 class="card-title">${student.name}</h5>
-      <p class="hobby">${student.specialSkill}</p>
-      <p class="type">${student.type}</p>
-      <button class="btn btn-primary" id="expel--${student.id}">Delete</button>
+      <button class="btn btn-primary" id="expel--${student.id}">Expel</button>
     </div>
     </div>`;
   })
