@@ -1,41 +1,36 @@
 // needed this to get the modal.hide to make my modal go away after button pressed
 const myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
 
-let filterToggle =true;
-// Student data go here //
+// Student data //
 const students = [
   {
     id: 1,
     name: "Harry Potter",
-    hobby: "Breaking my glasses",
     house: "Gryffindor",
     imageUrl: "https://heroprop.com/wp-content/uploads/2021/02/Harry-Potter-The-Chamber-of-Secrets-Harrys-Daniel-Radcliffe-Broken-Lens-Movie-Prop.jpg",
   },
   {
     id: 2,
     name: "Cho Chang",
-    hobby: "Helping the D.A.",
     house: "Ravenclaw",
-    imageUrl: "https://static.wikia.nocookie.net/warner-bros-entertainment/images/6/6b/A9B99E2A-F63B-401D-A7DC-D02B520D2096.webp/revision/latest?cb=20210730031843",
+    imageUrl: "https://images.ctfassets.net/usf1vwtuqyxm/2etTX5DhYmujFyyePBZlxE/26d0fe01bfc74016de6a893b34faab71/cho-chang_3_1800x1248.png",
   },
   {
     id: 3,
     name: "Cedric Diggory",
-    hobby: "Hanging out in graveyards",
     house: "Hufflepuff",
-    imageUrl: "https://static.wikia.nocookie.net/harrypotter/images/9/90/Cedric_Diggory_Profile.png/revision/latest?cb=20161123045136",
+    imageUrl: "https://images.ctfassets.net/usf1vwtuqyxm/6tVgu5UdC8WKo4AYqCkSWY/476a2ecc9537000651e2bb729588ec49/CedricDiggory_WB_F4_CedricDiggoryInTriwizardMaze_Still_080615_Land.jpg?fm=jpg&q=70&w=2560",
   },
   {
     id: 4,
-    name: "Vincent Crabbe",
-    hobby: "Eating cake",
+    name: "Draco Malfoy",
     house: "Slytherin",
-    imageUrl: "https://static.wikia.nocookie.net/harrypotter/images/b/ba/Vincent_Crabbe.jpg/revision/latest?cb=20091224183746",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/en/1/16/Draco_Mal.JPG",
   }
 ];
 
 // Utility function //
-renderToDom = (divId, htmlToRender) => {
+const renderToDom = (divId, htmlToRender) => {
   const selectedDiv = document.querySelector(divId);
   selectedDiv.innerHTML = htmlToRender;
   };
@@ -43,7 +38,7 @@ renderToDom = (divId, htmlToRender) => {
 // sort function //
 const sortFunction = () => {
   const house = Math.floor(Math.random() * 4) 
-  const houseId = ["gryffindor", "ravenclaw", "hufflepuff", "slytherin"];
+  const houseId = ["Gryffindor", "Ravenclaw", "Hufflepuff", "Slytherin"];
   const nameInput = document.querySelector('#name');
   console.log(houseId[house]);
 
@@ -64,35 +59,96 @@ const sortFunction = () => {
 document.querySelector("#sortBtn").addEventListener("click", (e) => {
   sortFunction()
   cardsOnDom(students);
+  filterButton();
 });
 
 // Filter student buttons //
-const filterBtn = () => {
+const filterButton = () => {
   domString = `
   <div class="d-flex flex-wrap justify-content-between my-3">
-    <button class="btn btn-secondary btn-lg buttonRow" id="gryfiyndor">Gryffindor</button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="gryffindor">Gryffindor</button>
     <button class="btn btn-secondary btn-lg buttonRow" id="ravenclaw">Ravenclaw</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="huffkepuff">Hufflepuff</button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="hufflepuff">Hufflepuff</button>
     <button class="btn btn-secondary btn-lg buttonRow" id="slytherin">Slytherin</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="expelled">Expelled</button>
-    <button class="btn btn-secondary btn-lg buttonRow" id="all-students">All Students</button></button>
+    <button class="btn btn-secondary btn-lg buttonRow" id="all">All Students</button></button>
   </div>
   `;
-renderToDom('#filterBtn', domString)
+renderToDom('#filterBtns', domString)
 };
 
 // Cards //
 const cardsOnDom = (students) => {
   let domString = "";
-  students.map(student => {
+  students.map((student) => {
 
-    domString += `<div class="card" style="width: 18rem;">
+    domString += `<div class="card" ${student.house}" style="width: 18rem;">
     <img src="${student.imageUrl}" class="card-img-top" alt=${student.name}>
-    <div class="card-body">
+    <div class="card-body"> First Years
       <h5 class="card-title">${student.name}</h5>
+      <p class="student-house">${student.house}</p>
       <button class="btn btn-primary" id="expel--${student.id}">Expel</button>
     </div>
     </div>`;
   })
   renderToDom('#studentCards', domString)
 };
+
+
+const showGryffindorButton = document.querySelector("#gryffindor");
+const showRavenclawButton = document.querySelector("#ravenclaw");
+const showHufflepuffButton = document.querySelector("#hufflepuff");
+const showSlytherinButton = document.querySelector("#slytherin");
+const showAllButton = document.querySelector("#all");
+
+
+document.querySelector('#filterBtns').addEventListener("click", (e) => {
+  if (e.target.id.includes("gryffindor")) {
+    const gryff = students.filter((students) => students.house === "Gryffindor");
+    cardsOnDom(gryff);
+  } else if (e.target.id.includes("ravenclaw")) {
+    const raven = students.filter((students) => students.house === "Ravenclaw");
+    cardsOnDom(raven);
+  } else if (e.target.id.includes("hufflepuff")) {
+    const huffle = students.filter((students) => students.house === "Hufflepuff");
+    cardsOnDom(huffle);
+  } else if (e.target.id.includes("slytherin")) {
+    const slyth = students.filter((students) => students.house === "Slytherin");
+    cardsOnDom(slyth);
+  } else if (e.target.id.includes("all")) {
+    cardsOnDom(students);
+  }
+  
+});
+
+
+// Expelled //
+
+function renderExpelled() {
+  let domString = "";
+  expelled.map((expelledStudents) => {
+
+    domString += `<div class="expelled-cards${expelledStudents.house}" style="width: 18rem;">
+    <img src="${expelledStudents.imageUrl}" class="card-img-top" alt=${expelledStudents.name}>
+    <div class="card-body">
+      <h5 class="card-title">${expelledStudents.name}</h5>
+      <p class="student-house">${expelledStudents.house}</p>
+      <button class="btn btn-primary" id="expel--${expelledStudents.id}">Expel</button>
+    </div>
+    </div>`;
+  })
+  renderToDom('#expelCards', domString)
+  
+};
+
+document.querySelector('#expelCards').addEventListener("click", (e) => {
+  if (e.target.id.includes("expel")) {
+    const[, id] = e.target.id.split("--");
+    const index = students.findIndex((student) => student.id === Number(id));
+
+    expelledStudents.push(students[index]);
+
+    students.splice(index, 1);
+    cardsOnDom(students);
+    gone();
+  }
+})

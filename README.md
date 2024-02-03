@@ -55,3 +55,10 @@ Think of a way you can expel students without just hiding those divs on the page
 - House Colors: The color of the student's card changes depending on which house they were sorted.
 - Card Sorting/Ordering: Sort the student cards by some criteria (i.e. alphabetically by name, by house)
 
+
+
+
+## lessons
+-Time managment is key for projects. 
+-Plan your project out how you want it to work.
+-Focus on the MVP you can always style once its up and working.

@@ -11,3 +11,9 @@ body {
   width: 500px;
   align-self: center;
 }
+.Gryffindor {
+  background-color: red;
+}
+.Ravenclaw {
+  background-color: yellow;
+}
