@@ -1,7 +1,7 @@
 body {
-  background-color: rgb(174, 162, 147);
+  background-color: rgb(93, 63, 26);
 }
-.container {
+.card {
   display:flex;
   text-align: center;
   background-image: url("https://cdn2.vectorstock.com/i/1000x1000/82/61/colorful-magic-wand-at-black-background-vector-21288261.jpg");
@@ -12,8 +12,37 @@ body {
   align-self: center;
 }
 .Gryffindor {
-  background-color: red;
+  background-color: rgb(129, 27, 27);
+}
+.Hufflepuff {
+  background-color: rgb(148, 148, 15);
 }
 .Ravenclaw {
-  background-color: yellow;
+  background-color: rgb(35, 35, 143);
+}
+.Slytherin {
+  background-color: rgb(13, 89, 13);
+}
+#cards {
+  display:flex;
+  padding: 10vh;
+  justify-content: space-between;
+}
+#gryffindor {
+  background-color: rgb(129, 27, 27);
+}
+#hufflepuff {
+  background-color: rgb(148, 148, 15);
+}
+#ravenclaw {
+  background-color: rgb(35, 35, 143);
+}
+#slytherin {
+  background-color: rgb(13, 89, 13);
+}
+#all {
+  background-color: rgb(18, 46, 16);
+}
+.modal-dialog {
+  color: rgb(79, 66, 66);
 }
