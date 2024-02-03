@@ -1,6 +1,6 @@
 // needed this to get the modal.hide to make my modal go away after button pressed
 const myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
-
+const expelledStudents =[];
 // Student data //
 const students = [
   {
@@ -78,10 +78,10 @@ renderToDom('#filterBtns', domString)
 
 // Cards //
 const cardsOnDom = (students) => {
-  let domString = "";
+  let domString = `<div class="First">First Years</div>`
   students.map((student) => {
 
-    domString += `<div class="card" ${student.house}" style="width: 18rem;">
+    domString += `<div class="card ${student.house}" style="width: 18rem;">
     <img src="${student.imageUrl}" class="card-img-top" alt=${student.name}>
     <div class="card-body"> First Years
       <h5 class="card-title">${student.name}</h5>
@@ -124,15 +124,14 @@ document.querySelector('#filterBtns').addEventListener("click", (e) => {
 // Expelled //
 
 function renderExpelled() {
-  let domString = "";
-  expelled.map((expelledStudents) => {
+  let domString = `<div class="expelled" >Expelled Students</div>`
+  expelledStudents.map((student) => {
 
-    domString += `<div class="expelled-cards${expelledStudents.house}" style="width: 18rem;">
-    <img src="${expelledStudents.imageUrl}" class="card-img-top" alt=${expelledStudents.name}>
+    domString += `<div class="expelled-cards"${student.house}" style="width: 18rem;">
+    <img src="${student.imageUrl}" class="card-img-top" alt=${student.name}>
     <div class="card-body">
-      <h5 class="card-title">${expelledStudents.name}</h5>
-      <p class="student-house">${expelledStudents.house}</p>
-      <button class="btn btn-primary" id="expel--${expelledStudents.id}">Expel</button>
+      <h5 class="card-title">${student.name}</h5>
+      
     </div>
     </div>`;
   })
@@ -140,7 +139,7 @@ function renderExpelled() {
   
 };
 
-document.querySelector('#expelCards').addEventListener("click", (e) => {
+document.querySelector('#studentCards').addEventListener("click", (e) => {
   if (e.target.id.includes("expel")) {
     const[, id] = e.target.id.split("--");
     const index = students.findIndex((student) => student.id === Number(id));
@@ -149,6 +148,6 @@ document.querySelector('#expelCards').addEventListener("click", (e) => {
 
     students.splice(index, 1);
     cardsOnDom(students);
-    gone();
+    renderExpelled();
   }
 })
