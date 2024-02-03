@@ -62,3 +62,8 @@ Think of a way you can expel students without just hiding those divs on the page
 -Time managment is key for projects. 
 -Plan your project out how you want it to work.
 -Focus on the MVP you can always style once its up and working.
+-I spent way to much time on adding random images to the cards 
+
+
+## loom video
+-link to video https://www.loom.com/share/f82943078f394f8e9fffb917050b1541?sid=88e3b051-5b5e-4abb-b2dd-91a75138fd25
